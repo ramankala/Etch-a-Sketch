@@ -1,0 +1,1 @@
+Furthering my skills in DOM manipulation to build a cross-over between a sketchpad and an Etch-a-Sketch.
