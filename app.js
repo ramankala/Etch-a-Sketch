@@ -1,7 +1,4 @@
-// create 16x16 grid of square divs
-// for i > 4
-// for j < 4
-// give div box properties
+
 
 const container = document.querySelector('#container');
 
@@ -16,6 +13,10 @@ function createGrid(){
         for (let j = 0; j < 16; j++){
             let box = document.createElement('div');
             box.className = "cell";
+            box.addEventListener('mouseover', function(){
+                box.className = "cell blackBox";
+
+            });
             row.appendChild(box);
         }
         container.appendChild(row);
@@ -26,3 +27,6 @@ function createGrid(){
 }
 
 createGrid();
+
+//how to create a new grid in the same total space as before? e.g. 64x64
+//look into using css grid instead of flexbox
