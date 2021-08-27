@@ -2,6 +2,8 @@
 
 const container = document.querySelector('#container');
 
+const gridContainer = document.querySelector('#gridContainer');
+
 const resetBtn = document.querySelector('#reset');
 
 
@@ -18,10 +20,10 @@ resetBtn.addEventListener('click', function(){
 
 function createGrid(pixelSize){
 
-    container.replaceChildren();
+    gridContainer.replaceChildren();
 
-    container.style.setProperty("--grid-rows", pixelSize);
-    container.style.setProperty("--grid-cols", pixelSize);
+    gridContainer.style.setProperty("--grid-rows", pixelSize);
+    gridContainer.style.setProperty("--grid-cols", pixelSize);
     
     for (let i = 0; i < pixelSize * pixelSize; i++){
         let box = document.createElement('div');
@@ -30,7 +32,7 @@ function createGrid(pixelSize){
             e.target.style.backgroundColor = "black";
         })
 
-        container.appendChild(box);
+        gridContainer.appendChild(box);
         
     }
     
