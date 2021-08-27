@@ -10,32 +10,30 @@ const resetBtn = document.querySelector('#reset');
 resetBtn.addEventListener('click', function(){
     let pixelSize = window.prompt('Number of squares per side for the new grid(Max: 100)?');
 
-    createNewGrid(pixelSize);
+    createGrid(pixelSize);
 
 
 });
 
 
-function createGrid(){
+function createGrid(pixelSize){
 
-    let initialSize = 16;
+    container.replaceChildren();
+
+    container.style.setProperty("--grid-rows", pixelSize);
+    container.style.setProperty("--grid-cols", pixelSize);
     
-    for (let i = 0; i < initialSize; i++){
-        let row = document.createElement('div');
-        row.className = "row";
+    for (let i = 0; i < pixelSize * pixelSize; i++){
+        let box = document.createElement('div');
+        box.className = "cell";
+        box.addEventListener('mouseover', function(e){
+            e.target.style.backgroundColor = "black";
+        })
 
-        for (let j = 0; j < initialSize; j++){
-            let box = document.createElement('div');
-            box.className = "cell";
-            box.addEventListener('mouseover', function(){
-                box.className = "cell blackBox";
-
-            });
-            row.appendChild(box);
-        }
-        container.appendChild(row);
+        container.appendChild(box);
         
     }
+    
 
     
 }
@@ -61,32 +59,22 @@ function createGrid(){
 
 //     container.replaceChildren();
 
-//     container.style.setProperty("--grid-rows", pixelSize);
-//     container.style.setProperty("--grid-cols", pixelSize);
-
-//     // container.style.height = pixelSize;
-//     // container.style.width = pixelSize;
+//     // container.style.setProperty("--grid-rows", pixelSize);
+//     // container.style.setProperty("--grid-cols", pixelSize);
     
 
-//     for (let i = 0; i < pixelSize; i++){
-//         let row = document.createElement('div');
-//         row.className = "row";
+//     for (let i = 0; i < pixelSize * pixelSize; i++){
+//         let box = document.createElement('div');
+//         box.className = "cell";
+//         box.addEventListener('mouseover', function(e){
+//             e.target.style.backgroundColor = "black";
+//         })
 
-//         for (let j = 0; j < pixelSize; j++){
-//             let box = document.createElement('div');
-//             box.className = "cell";
-//             box.addEventListener('mouseover', function(){
-//                 box.className = "cell blackBox";
-
-//             });
-//             row.appendChild(box);
-//         }
-//         container.appendChild(row);
-        
+//         container.appendChild(box);
 //     }
 // }
 
-createGrid();
+createGrid(16);
 
 //how to create a new grid in the same total space as before? e.g. 64x64
 //look into using css grid instead of flexbox
