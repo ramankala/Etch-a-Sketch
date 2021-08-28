@@ -10,9 +10,17 @@ const resetBtn = document.querySelector('#reset');
 
 
 resetBtn.addEventListener('click', function(){
+
+
     let pixelSize = window.prompt('Number of squares per side for the new grid(Max: 100)?');
 
-    createGrid(pixelSize);
+    if (pixelSize <= 100 && !(pixelSize == null) && !(pixelSize == '')){
+        createGrid(pixelSize);
+    }
+
+    else {
+        alert('Max number of squares exceeded, please try again.');
+    }
 
 
 });
